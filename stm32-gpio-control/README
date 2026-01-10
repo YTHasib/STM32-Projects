@@ -1,0 +1,37 @@
+# STM32 Alarm System (GPIO + SysTick + Interrupts)
+
+Motion-triggered alarm system built on an **STM32L552ZET6Q**. This project focuses on writing clean, reusable **bare-metal drivers** and using **interrupts + a non-blocking timebase** to implement a robust embedded state machine.
+
+## What this demonstrates (recruiter highlights)
+- **Bare-metal peripheral abstraction**: custom GPIO + SysTick drivers (clean APIs, reusable across labs)
+- **Interrupt-driven design**: GPIO interrupts with callbacks (event-driven input handling)
+- **Non-blocking timing**: periodic SysTick interrupt used as a timebase for scheduling (no busy-wait loops)
+- **Embedded state machine**: DISARMED → ARMED → TRIGGERED behavior
+- **Debugging workflow**: `printf()` routed through **SWV/ITM** for real-time debug logs in STM32CubeIDE
+
+(Driver + state machine goals are part of the lab objectives/design.) :contentReference[oaicite:0]{index=0} :contentReference[oaicite:1]{index=1}
+
+## System behavior (high level)
+- **DISARMED**: outputs off
+- **ARMED**: LEDs indicate armed state; motion sensor triggers alarm
+- **TRIGGERED**: alarm outputs activate until disarmed/acknowledged
+- Handles short vs long press logic (E-stop / button timing) and motion detect callback logic (example implementation shown in our report). :contentReference[oaicite:2]{index=2}
+
+## Hardware / tools
+- Board: STM32 (course platform) using **STM32L552ZET6Q**
+- IDE: **STM32CubeIDE**
+- Debug: **SWV ITM Data Console** for `printf()` output :contentReference[oaicite:3]{index=3}
+
+## How to build & run
+1. Open in STM32CubeIDE (or import as an existing project).
+2. Ensure the project is configured for **STM32L552ZET6Q** and uses the CMSIS Drivers paths required in the lab setup. :contentReference[oaicite:4]{index=4}
+3. Build + Debug.
+4. Enable **SWV** and open **SWV ITM Data Console** to view logs. :contentReference[oaicite:5]{index=5}
+
+## Project structure (typical)
+- `Inc/` – driver + app headers (gpio, systick, alarm)
+- `Src/` – driver + app source (gpio.c, systick.c, alarm.c, main.c)
+- `Drivers/` – CMSIS device support
+
+## Key takeaways
+This repo is a compact example of how I structure embedded projects: **small drivers**, **clear interfaces**, and an **event-driven application layer** with good debug visibility.
