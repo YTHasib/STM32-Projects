@@ -1,0 +1,40 @@
+# STM32 Calculator (Touchpad UI + Multi-page Display + ARM Assembly)
+
+Interactive calculator app on **STM32L552ZET6Q** using an onboard **numeric touchpad**, a **multi-page display**, and multiple **hand-written assembly subroutines** callable from C.
+
+## What this demonstrates (recruiter highlights)
+- **Capacitive touch input** driver + clean input handling :contentReference[oaicite:12]{index=12}
+- **UI driver iteration**: display upgraded to support multiple pages and page switching behavior :contentReference[oaicite:13]{index=13}
+- **C ↔ Assembly integration**:
+  - exporting assembly symbols to the linker
+  - calling assembly from C while respecting calling conventions :contentReference[oaicite:14]{index=14}
+
+## Supported operations (example set)
+- Increment / decrement
+- 4-function arithmetic (+, −, ×, ÷)
+- GCD, factorial, Fibonacci
+- Sorting and average (with formatted output / paging for longer results)
+
+(These functions appear in the calc app structure and asm function prototypes.) :contentReference[oaicite:15]{index=15}
+
+## How it works (high level)
+- A **state machine UI**: MENU → PROMPT → ENTRY → RUN → SHOW/WAIT
+- Touchpad provides key events; app collects operands and dispatches to ASM routines
+- Output is rendered to the display; longer outputs (like SORT) use paging logic (shown in report snippet). :contentReference[oaicite:16]{index=16}
+
+## Hardware / tools
+- MCU: STM32L552ZET6Q
+- IDE: STM32CubeIDE
+- Language: C + ARM assembly
+
+## Build & run
+1. Open/import project in STM32CubeIDE.
+2. Build + flash.
+3. Use the touchpad to select an operation and enter operands.
+4. View results on the display pages.
+
+## Why this matters
+This repo is a strong “embedded systems” signal because it shows:
+- low-level UI driver work,
+- structured application design,
+- and real **C/ASM boundary** experience (linking + calling conventions).
