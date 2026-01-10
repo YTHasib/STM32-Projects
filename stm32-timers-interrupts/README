@@ -1,0 +1,35 @@
+# STM32 User Interface (I2C + I/O Expanders + Display) + Memory Game
+
+Embedded UI stack on **STM32L552ZET6Q** featuring a custom **I2C driver**, expanded GPIO via **I/O expanders**, and a simple **interactive game** implemented with cooperative multitasking.
+
+## What this demonstrates (recruiter highlights)
+- **I2C protocol + driver work**: implementing / extending an I2C driver and using it to control external devices :contentReference[oaicite:6]{index=6}
+- **Hardware abstraction**: extending GPIO to support I/O expanders (effective pin-count expansion) :contentReference[oaicite:7]{index=7}
+- **UI development**: LEDs + switches + character display as a full user interface :contentReference[oaicite:8]{index=8}
+- **Cooperative multitasking**: non-blocking logic to keep UI responsive while running “game” logic :contentReference[oaicite:9]{index=9}
+
+## Features
+- I2C-backed device control and display output (character display)
+- Button/LED interface through an expander
+- Example game (Memory-style) using:
+  - Randomized sequence generation
+  - Non-blocking timing for show/repeat phases
+  - Clear UI states (title → show sequence → user input → game over)
+  - Report code snippet shows the state-driven approach and UI rendering calls. :contentReference[oaicite:10]{index=10}
+
+## Hardware / tools
+- MCU: STM32L552ZET6Q (course platform)
+- IDE: STM32CubeIDE
+
+## How to build & run
+1. Create or import the project in STM32CubeIDE.
+2. Copy over your `Src/`, `Inc/`, and `Drivers/` from Lab 1 as the baseline (lab workflow). :contentReference[oaicite:11]{index=11}
+3. Build + flash.
+4. Use the onboard UI to start and play the game.
+
+## Project structure (typical)
+- Drivers: `i2c.*`, `gpio.*`, `systick.*`, `display.*`
+- App: `game.*`, `main.c`
+
+## Why this matters
+This repo shows I can go from **protocol fundamentals → driver → user-facing behavior**, and keep the code modular enough to reuse in later labs/projects.
