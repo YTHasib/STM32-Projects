@@ -1,0 +1,40 @@
+# STM32 Motor Controller + Environmental Monitor (ADC + PWM + SPI)
+
+Final integrated embedded project on **STM32L552ZET6Q**:
+- **DC motor speed + direction control**
+- **temperature/humidity monitoring**
+- multiple new drivers (ADC, timers, SPI), plus performance improvements via higher system clock.
+
+## What this demonstrates (recruiter highlights)
+- **Clock / performance tuning**: increasing SYSCLK from 4 MHz to 48 MHz using PLL, plus compiler optimization workflow :contentReference[oaicite:17]{index=17} :contentReference[oaicite:18]{index=18}
+- **ADC integration**: reading analog input (e.g., slide potentiometer) to set motor command :contentReference[oaicite:19]{index=19}
+- **PWM motor control**: timer compare mode to drive a DC motor :contentReference[oaicite:20]{index=20}
+- **Speed feedback**: timer capture mode for rotary encoder measurement :contentReference[oaicite:21]{index=21}
+- **Closed-loop control**: PI control and tuning for stability/steady-state error :contentReference[oaicite:22]{index=22}
+- **SPI sensor stack**: environmental sensor comms + calibration/measurement pipeline (report snippet shows SPI transactions + parameter processing). :contentReference[oaicite:23]{index=23}
+
+## Features
+### Environmental monitor
+- SPI-based sensor init + ID read
+- Calibration parameter reads (temperature + humidity)
+- Periodic measurement trigger + status polling + conversion to engineering units (implemented in app layer). :contentReference[oaicite:24]{index=24}
+
+### Motor controller
+- Input: analog setpoint (ADC)
+- Output: PWM drive via timer compare
+- Feedback: encoder via timer capture
+- Controller: PI loop with tuneable gains (target: stable response and low steady-state error) :contentReference[oaicite:25]{index=25}
+
+## Hardware / tools
+- MCU: STM32L552ZET6Q
+- IDE: STM32CubeIDE
+- Peripherals: ADC, TIM (PWM + capture), SPI, GPIO, SysTick
+
+## Build & run
+1. Build in STM32CubeIDE.
+2. Flash to the board.
+3. Use the UI to switch between apps (motor/enviro) and interact with inputs.
+4. Verify sensor readouts and motor response.
+
+## Why this matters
+This repo shows I can integrate **multiple peripherals**, keep code modular with drivers, and deliver a full embedded application that includes **control + sensing + UI + performance tuning**.
