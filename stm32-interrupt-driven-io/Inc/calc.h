@@ -1,10 +1,3 @@
-/*
- * calc.h
- *
- *  Created on: Oct 30, 2025
- *      Author: ashay020
- */
-
 #ifndef CALC_H_
 #define CALC_H_
 
