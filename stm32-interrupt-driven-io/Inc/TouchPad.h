@@ -1,10 +1,3 @@
-/*
- * TouchPad.h
- *
- *  Created on: Oct 30, 2025
- *      Author: ashay020
- */
-
 #ifndef TOUCHPAD_H_
 #define TOUCHPAD_H_
 
