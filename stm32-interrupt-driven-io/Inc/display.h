@@ -1,10 +1,3 @@
-/*
- * display.h
- *
- *  Created on: Oct 30, 2025
- *      Author: ashay020
- */
-
 #ifndef DISPLAY_H_
 #define DISPLAY_H_
 
